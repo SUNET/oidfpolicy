@@ -1,6 +1,6 @@
 [package]
 name = "oidfpolicy"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 description = "Python module to merge OIDF policy and applying policy to metadata."
 documentation = "https://github.com/SUNET/oidfpolicy"
