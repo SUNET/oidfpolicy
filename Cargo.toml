@@ -13,6 +13,8 @@ license-file = "LICENSE"
 name = "oidfpolicy"
 crate-type = ["cdylib"]
 
+[dependencies]
+oidfed_metadata_policy = "0.3.0"
 
 [dependencies.pyo3]
 version = "0.25.0"
