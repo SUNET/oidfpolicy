@@ -179,9 +179,9 @@ dependencies = [
 
 [[package]]
 name = "oidfed_metadata_policy"
-version = "0.3.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9a6b3874a25a898040a2fa1a66f13ad7108aa55bb085d5487ceee7b35a1c120a"
+checksum = "5422b6e277abd7d1141e51a90ea004a3d493b93072d8bae2ed781771e407af4f"
 dependencies = [
  "anyhow",
  "env_logger",
@@ -193,8 +193,11 @@ dependencies = [
 name = "oidfpolicy"
 version = "0.0.3"
 dependencies = [
+ "anyhow",
+ "env_logger",
  "oidfed_metadata_policy",
  "pyo3",
+ "serde_json",
 ]
 
 [[package]]
