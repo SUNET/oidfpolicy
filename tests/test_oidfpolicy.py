@@ -14,7 +14,11 @@ def test_merging_policies():
         tapolicy = fobj.read()
 
     with open(os.path.join(data_dir, "iapolicy0.json")) as fobj:
-        iapolicy = fobj.read()
+        iapolicy_full = json.load(fobj)
+
+    # Now for mering policies we need to find only the policy part from the
+    # whole iapolicy document
+    iapolicy = json.dumps(iapolicy_full["metadata_policy"])
 
     merged = merge_policies(tapolicy, iapolicy)
     data = json.loads(merged)
@@ -32,8 +36,9 @@ def test_merging_policies_with_other_types():
         tapolicy = fobj.read()
 
     with open(os.path.join(data_dir, "iapolicy1.json")) as fobj:
-        iapolicy = fobj.read()
+        iapolicy_full = json.load(fobj)
 
+    iapolicy = json.dumps(iapolicy_full["metadata_policy"])
     merged = merge_policies(tapolicy, iapolicy)
     data = json.loads(merged)
     with open(os.path.join(data_dir, "policymerge1.json")) as fobj:
@@ -42,5 +47,22 @@ def test_merging_policies_with_other_types():
 
     self.assertEqual(real_merged, data)
 
+
+def test_apply_policy():
+    self = TestCase()
+    self.maxDiff = None
+
+    with open(os.path.join(data_dir, "mergedpolicy0.json")) as fobj:
+        merged_policy = fobj.read()
+
+    with open(os.path.join(data_dir, "metadata0.json")) as fobj:
+        metadata = fobj.read()
+
+
+    applied = json.loads(apply_policy(merged_policy, metadata))
+
+    with open(os.path.join(data_dir, "appliedmetadata0.json")) as fobj:
+        metadata_from_spec = json.load(fobj)
+    self.assertEqual(metadata_from_spec, applied)
 
 

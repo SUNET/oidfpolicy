@@ -6,3 +6,12 @@ def merge_policies(tapolicy: str, iapolicy: str) -> str:
 
     :return: str representation of merged policy.
     """
+
+def apply_policy(policy: str, metadata: str) -> str:
+    """Applies the given policy on the metadata.
+
+    :param policy: Merged olicy from Root -> IA
+    :param metadata: str, the metadata JSON
+
+    :return: str representation of policy applied metadata.
+    """
