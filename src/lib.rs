@@ -30,7 +30,7 @@ fn apply_policy(policy: &str, metadata: &str) -> PyResult<String> {
     let metadata_val: Map<String, Value> =
         serde_json::from_str(metadata).map_err(|e| PyValueError::new_err(e.to_string()))?;
 
-    match oidfed_metadata_policy::apply_policy_document_on_metadata(policy_val, &metadata_val) {
+    match oidfed_metadata_policy::apply_policy_document_on_metadata(&policy_val, &metadata_val) {
         Ok(policy) => Ok(json!(policy).to_string()),
         Err(e) => Err(PyRuntimeError::new_err(e.to_string())),
     }
