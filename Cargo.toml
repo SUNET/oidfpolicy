@@ -1,7 +1,7 @@
 [package]
 name = "oidfpolicy"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 description = "Python module to merge OIDF policy and applying policy to metadata."
 documentation = "https://github.com/SUNET/oidfpolicy"
 readme = "README.md"
@@ -15,12 +15,11 @@ crate-type = ["cdylib"]
 
 [dependencies]
 #oidfed_metadata_policy = { git = "https://github.com/SUNET/oidfed_metadata_policy", branch = "debug"}
-oidfed_metadata_policy = "0.6.0"
+oidfed_metadata_policy = "0.7.0"
 serde_json = "1.0.140"
 env_logger = "0.11.8"
 anyhow = "*"
 
 [dependencies.pyo3]
-version = "0.25.0"
-# "abi3-py38" tells pyo3 (and maturin) to build using the stable ABI with minimum Python version 3.8
+version = "0.27"
 features = ["abi3-py310"]
