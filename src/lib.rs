@@ -1,4 +1,3 @@
-use env_logger;
 use pyo3::exceptions::*;
 use pyo3::prelude::*;
 use serde_json::{self, json};
@@ -39,7 +38,6 @@ fn apply_policy(policy: &str, metadata: &str) -> PyResult<String> {
 /// A Python module implemented in Rust.
 #[pymodule]
 fn oidfpolicy(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    env_logger::init();
     m.add_function(wrap_pyfunction!(merge_policies, m)?)?;
     m.add_function(wrap_pyfunction!(apply_policy, m)?)?;
     Ok(())
